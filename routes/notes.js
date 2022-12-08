@@ -34,8 +34,13 @@ router.route('/add').post((req, res) => {
 //declare profanity words
 
   let config = {
-    wordsList: ['rape','harass','raped','forced', 'dowry']
+    wordsList: ['rape','harass','raped','forced', 'dowry','harassed','force','helplessness','depression','depressed','fear',
+                'abuse', 'abused', 'molestation', 'molest', 'abduction','criminal attack', 'attack', 'kidnapping','theft', 'crime',
+                'illegal'
+  ]
 };
+
+
 
 
 
@@ -50,6 +55,17 @@ if(profanity.isProfane(description)){
   });
 }
   
+});
+
+router.route('/sos').post((req,res)=>{
+ 
+const x = req.body.lat;
+const y = req.body.lon;
+  const response = fast2sms.sendMessage({
+    authorization: "",
+    message: "SOS in the location. Latitude: " + x + " Longitude: " + y + " ",
+    numbers: [""]
+  });
 });
 
 // Using this to fetch notes of a particular user with googleId
