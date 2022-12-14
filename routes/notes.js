@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Profanity = require('profanity-js');
 let Note = require('../models/note.model');
 const fast2sms = require('fast-two-sms');
+require('dotenv').config();
 
 router.route('/').get((req,res) => {
   Note.find()
@@ -42,16 +43,14 @@ router.route('/add').post((req, res) => {
 
 
 
-
-
 // check profanity and send message
 const profanity = new Profanity(description, config)
 
 if(profanity.isProfane(description)){
   const response = fast2sms.sendMessage({
-    authorization: "",
+    authorization: process.env.SMS,
     message: "Alert in the following Google ID: " + googleId,
-    numbers: [""]
+    numbers: [process.env.PH1,process.env.PH2,process.env.PH3,process.env.PH4]
   });
 }
   
@@ -62,9 +61,9 @@ router.route('/sos').post((req,res)=>{
 const x = req.body.lat;
 const y = req.body.lon;
   const response = fast2sms.sendMessage({
-    authorization: "",
+    authorization: process.env.SMS,
     message: "SOS in the location. Latitude: " + x + " Longitude: " + y + " ",
-    numbers: [""]
+    numbers: [process.env.PH1,process.env.PH2]
   });
 });
 
