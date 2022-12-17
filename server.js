@@ -49,7 +49,7 @@ app.use(express.json());
 
 app.use(cors(
   {
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    origin: "https://fabulous-cuchufli-b27d82.netlify.app/", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true // allow session cookie from browser to pass through
   }
