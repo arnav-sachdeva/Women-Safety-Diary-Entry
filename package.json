@@ -13,7 +13,7 @@
     "express",
     "mongoose"
   ],
-  "author": "Siddhesh Kothadi",
+  "author": "Arnav Sachdeva",
   "license": "ISC",
   "dependencies": {
     "chai-http": "^4.3.0",
