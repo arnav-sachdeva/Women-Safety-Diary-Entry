@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
-const CLIENT_HOME_PAGE_URL = "https://fabulous-cuchufli-b27d82.netlify.app/";
+const CLIENT_HOME_PAGE_URL = "https://safeher.life";
 
 // when login is successful, retrieve user info
 router.get("/login/success", (req, res) => {
