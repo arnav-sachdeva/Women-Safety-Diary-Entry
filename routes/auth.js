@@ -43,7 +43,7 @@ router.get('/google',
 router.get( '/google/callback', 
     passport.authenticate( 'google', { 
         successRedirect: CLIENT_HOME_PAGE_URL,
-        failureRedirect: '/notes/auth/login/failed',
+        failureRedirect: '/auth/login/failed',
     })
 );
 
