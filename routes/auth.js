@@ -3,7 +3,7 @@ const passport = require("passport");
 const CLIENT_HOME_PAGE_URL = "https://safeher.life";
 
 // when login is successful, retrieve user info
-router.get("/notes/login/success", (req, res) => {
+router.get("/login/success", (req, res) => {
   if (req.user) {
     res.json({
       success: true,
@@ -22,7 +22,7 @@ router.get("/notes/login/success", (req, res) => {
 });
 
 // when login failed, send failed msg
-router.get("/notes/login/failed", (req, res) => {
+router.get("/login/failed", (req, res) => {
   res.status(401).json({
     success: false,
     message: "user failed to authenticate."
@@ -30,17 +30,17 @@ router.get("/notes/login/failed", (req, res) => {
 });
 
 // When logout, redirect to client
-router.get("/notes/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect(CLIENT_HOME_PAGE_URL);
 });
 
-router.get('/notes/google',
+router.get('/google',
   passport.authenticate('google', { scope: 
       [ 'https://www.googleapis.com/auth/plus.login' ] }
 ));
 
-router.get( '/notes/google/callback', 
+router.get( '/google/callback', 
     passport.authenticate( 'google', { 
         successRedirect: CLIENT_HOME_PAGE_URL,
         failureRedirect: '/notes/auth/login/failed',
