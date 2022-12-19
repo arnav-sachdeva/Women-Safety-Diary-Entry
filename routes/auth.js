@@ -16,7 +16,7 @@ router.get("/login/success", (req, res) => {
   else{
     res.json({
       success : false,
-      message : 'user successfully logged out'
+      message : JSON.stringify(req)
     })
   }
 });
