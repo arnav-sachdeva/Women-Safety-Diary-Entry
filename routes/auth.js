@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const passport = require("passport");
-const CLIENT_HOME_PAGE_URL = "https://fabulous-cuchufli-b27d82.netlify.app";
+const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
 
 // when login is successful, retrieve user info
 router.get("/login/success", (req, res) => {
-  console.log("----------------------------------" , req.cookies , "*********************");
+  
   if (req.user) {
     res.json({
       success: true,
@@ -17,7 +17,7 @@ router.get("/login/success", (req, res) => {
   else{
     res.json({
       success : false,
-      message : req.user
+      message : 'user successfully logged out'
     })
   }
 });
