@@ -9,7 +9,11 @@ const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
-// const session = require("express-session");
+const session = require("express-session");
+
+
+
+
 
 require('dotenv').config();
 const port = process.env.PORT || 5000;
@@ -47,6 +51,8 @@ app.use(passport.initialize());
 
 // deserialize cookie from the browser
 app.use(passport.session());
+
+app.use(session({secret: 'keyboard cat'}))
 
 app.use(express.json());
 
