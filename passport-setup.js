@@ -6,7 +6,7 @@ require('dotenv').config();
 // serialize the user.id to save in the cookie session
 // so the browser will remember the user when login
 passport.serializeUser((user, done) => {
-  console.log(user)
+  console.log("from serialize user", user)
   done(null, user.id);
 });
 
@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy({
   async (request, accessToken, refreshToken, profile, done) => {
     const currentUser = await User.findOne({googleId : profile.id});
       if (!currentUser) {
-        console.log(JSON.stringify(profile))
+        console.log("from google strategy", JSON.stringify(profile))
         const newUser = await new User({
           googleId : profile.id,
           name : profile.displayName,
