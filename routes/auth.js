@@ -16,7 +16,7 @@ router.get("/login/success", (req, res) => {
   else{
     res.json({
       success : false,
-      message : req
+      message : req.user
     })
   }
 });
