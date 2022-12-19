@@ -39,8 +39,9 @@ app.use(
 // parse cookies
 app.use(cookieParser());
 
-app.use(express.bodyParser());
+// app.use(express.bodyParser());
 app.use(express.session({secret:"secret"}));
+app.set('trust proxy', 1)
 // initalize passport
 app.use(passport.initialize());
 
