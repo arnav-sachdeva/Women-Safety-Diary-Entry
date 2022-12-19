@@ -9,11 +9,7 @@ const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
-
-
-
-
+// const session = require("express-session");
 
 require('dotenv').config();
 const port = process.env.PORT || 5000;
@@ -43,22 +39,17 @@ app.use(
 // parse cookies
 app.use(cookieParser());
 
-// app.use(express.bodyParser());
-// app.use(express.session({secret:"secret"}));
-app.set('trust proxy', 1)
 // initalize passport
 app.use(passport.initialize());
 
 // deserialize cookie from the browser
 app.use(passport.session());
 
-app.use(session({secret: 'keyboard cat'}))
-
 app.use(express.json());
 
 app.use(cors(
   {
-    origin: "https://fabulous-cuchufli-b27d82.netlify.app", // allow to server to accept request from different origin
+    origin: "http://localhost:3000", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true // allow session cookie from browser to pass through
   }
