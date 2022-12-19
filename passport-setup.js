@@ -40,6 +40,7 @@ passport.use(new GoogleStrategy({
           done(null, newUser);
         }
       }
+  console.log("current user from passport setup", currentUser);
     done(null, currentUser);
   }
 ));
